@@ -1,6 +1,6 @@
 import { art } from "../art.js";
 import { bindPress } from "../engine.js";
-import { completePhase, phaseBanner, phaseTotal } from "../lib/phases.js";
+import { completePhase, GAME_PHASE_COUNT, phaseBanner, phaseTotal } from "../lib/phases.js";
 
 const ZONES = [
   { id: 0, label: "Esquerda", emoji: "⬅️", kickX: "16.666%" },
@@ -8,11 +8,9 @@ const ZONES = [
   { id: 2, label: "Direita", emoji: "➡️", kickX: "83.333%" },
 ];
 
-const PHASES = [
-  { goals: 2 },
-  { goals: 3 },
-  { goals: 4 },
-];
+const PHASES = Array.from({ length: GAME_PHASE_COUNT }, (_, phaseIndex) => ({
+  goals: Math.min(2 + Math.floor(phaseIndex / 2), 7),
+}));
 
 const KICK_MS = 580;
 const RESET_MS = 1100;

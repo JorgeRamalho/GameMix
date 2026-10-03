@@ -1,6 +1,8 @@
-/** Campanha Guerra Espacial — 7 fases com dificuldade crescente. */
+/** Campanha Guerra Espacial — 10 fases com dificuldade crescente. */
 
-export const SPACE_PHASE_COUNT = 7;
+import { GAME_PHASE_COUNT } from "../phases.js";
+
+export const SPACE_PHASE_COUNT = GAME_PHASE_COUNT;
 export const SPACE_START_LIVES = 10;
 
 export const SPACE_LEVEL_NAMES = [
@@ -11,6 +13,9 @@ export const SPACE_LEVEL_NAMES = [
   "Rajada veloz",
   "Tempestade",
   "Coroa estelar",
+  "Buraco negro",
+  "Galáxia longe",
+  "Comandante estelar",
 ];
 
 export function spaceLevelName(phaseIndex) {
@@ -18,7 +23,7 @@ export function spaceLevelName(phaseIndex) {
 }
 
 /**
- * @param {number} phaseIndex 0..6
+ * @param {number} phaseIndex 0..9
  */
 export function buildSpacePhaseSpec(phaseIndex) {
   const level = phaseIndex + 1;

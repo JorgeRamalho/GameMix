@@ -1,22 +1,19 @@
 import { art } from "../art.js";
 import { bindPress } from "../engine.js";
-import { completePhase, phaseBanner, phaseTotal } from "../lib/phases.js";
+import { completePhase, GAME_PHASE_COUNT, phaseBanner, phaseTotal } from "../lib/phases.js";
 
-const PHASES = [
-  { fish: 3, speed: 0.75, bob: 420 },
-  { fish: 4, speed: 0.95, bob: 380 },
-  { fish: 5, speed: 1.15, bob: 340 },
-  { fish: 6, speed: 1.35, bob: 300 },
-  { fish: 7, speed: 1.55, bob: 270 },
-  { fish: 8, speed: 1.8, bob: 240 },
-];
+const PHASES = Array.from({ length: GAME_PHASE_COUNT }, (_, phaseIndex) => ({
+  fish: 3 + phaseIndex,
+  speed: 0.75 + phaseIndex * 0.12,
+  bob: Math.max(200, 420 - phaseIndex * 22),
+}));
 
 export const pescaria = {
   id: "pescaria",
   title: "Pescaria",
   goal: "Atenção e coordenação",
   mount(ctx) {
-    const totalPhases = phaseTotal(ctx, PHASES.length);
+    const totalPhases = phaseTotal(ctx);
     const specs = PHASES.slice(0, totalPhases);
 
     const runPhase = (phaseIndex) => {

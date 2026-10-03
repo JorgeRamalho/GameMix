@@ -2,7 +2,7 @@ import { art } from "../art.js";
 
 import { bindPress, shuffle } from "../engine.js";
 
-import { completePhase, phaseBanner, phaseTotal } from "../lib/phases.js";
+import { completePhase, GAME_PHASE_COUNT, phaseBanner, phaseTotal } from "../lib/phases.js";
 import { rotateList } from "../lib/playVariety.js";
 
 
@@ -33,17 +33,23 @@ const ALL_PAIRS = [
 
 
 
-const PHASES = [
-
-  { pairs: 2, theme: "Objetos" },
-
-  { pairs: 3, theme: "Animais" },
-
-  { pairs: 3, theme: "Natureza" },
-
-  { pairs: 4, theme: "Tudo junto" },
-
+const LIGAR_THEMES = [
+  "Objetos",
+  "Animais",
+  "Natureza",
+  "Casa",
+  "Campo",
+  "Praia",
+  "Fazenda",
+  "Amigos",
+  "Desafio",
+  "Campeão",
 ];
+
+const PHASES = Array.from({ length: GAME_PHASE_COUNT }, (_, phaseIndex) => ({
+  pairs: Math.min(2 + Math.floor(phaseIndex / 2), ALL_PAIRS.length),
+  theme: LIGAR_THEMES[phaseIndex] ?? "Ligar",
+}));
 
 
 
@@ -75,11 +81,11 @@ export const ligar = {
 
   title: "Ligar",
 
-  goal: "Relacionar objetos",
+  goal: "10 fases ligando pares",
 
   mount(ctx) {
 
-    const totalPhases = phaseTotal(ctx, PHASES.length);
+    const totalPhases = phaseTotal(ctx);
 
     const specs =
       ctx.e2e && !ctx.e2eFull

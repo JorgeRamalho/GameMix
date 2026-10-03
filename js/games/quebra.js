@@ -3,8 +3,6 @@ import { completePhase, phaseBanner, phaseTotal } from "../lib/phases.js";
 import { pickUnique, rotateList } from "../lib/playVariety.js";
 import { PUZZLE_LABELS, PUZZLE_ORDER, PUZZLE_SCENES } from "./quebra-scenes.js";
 
-const QUEBRA_PHASE_COUNT = 10;
-
 function puzzleSpecs(ctx, totalPhases) {
   if (ctx.e2e && !ctx.e2eFull) {
     return [{ sceneId: "campo" }];
@@ -26,7 +24,7 @@ export const quebra = {
   title: "Quebra-cabeça",
   goal: "Montar 10 desenhos diferentes",
   mount(ctx) {
-    const totalPhases = phaseTotal(ctx, QUEBRA_PHASE_COUNT);
+    const totalPhases = phaseTotal(ctx);
     const specs = puzzleSpecs(ctx, totalPhases);
 
     const runPhase = (phaseIndex) => {

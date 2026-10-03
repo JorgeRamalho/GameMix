@@ -19,7 +19,7 @@ function photoImg(animal, className, sizes) {
 export const animais = {
   id: "animais",
   title: "Adivinhar animal",
-  goal: "Reconhecer bichinhos",
+  goal: "10 fases com bichinhos",
   mount(ctx) {
     const totalPhases = phaseTotal(ctx);
     const specs =

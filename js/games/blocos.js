@@ -1,6 +1,6 @@
 import { bindPress } from "../engine.js";
 import { onChoice } from "../lib/gameActions.js";
-import { completePhase, phaseBanner, phaseTotal } from "../lib/phases.js";
+import { completePhase, GAME_PHASE_COUNT, phaseBanner, phaseTotal } from "../lib/phases.js";
 import { pickUnique } from "../lib/playVariety.js";
 
 
@@ -23,33 +23,19 @@ const COLORS = [
 
 
 
-const PHASES = [
-
-  {
-
-    layout: "row2",
-
-    slots: ["vermelho", "azul"],
-
-  },
-
-  {
-
-    layout: "tower3",
-
-    slots: ["amarelo", "verde", "roxo"],
-
-  },
-
-  {
-
-    layout: "grid4",
-
-    slots: ["vermelho", "amarelo", "azul", "laranja"],
-
-  },
-
+const LAYOUT_CYCLE = [
+  { layout: "row2", slotCount: 2 },
+  { layout: "tower3", slotCount: 3 },
+  { layout: "grid4", slotCount: 4 },
 ];
+
+const PHASES = Array.from({ length: GAME_PHASE_COUNT }, (_, phaseIndex) => {
+  const { layout, slotCount } = LAYOUT_CYCLE[phaseIndex % LAYOUT_CYCLE.length];
+  return {
+    layout,
+    slots: COLORS.slice(0, slotCount).map((color) => color.id),
+  };
+});
 
 
 
@@ -93,7 +79,7 @@ export const blocos = {
 
   title: "Blocos coloridos",
 
-  goal: "Montar e encaixar as peças",
+  goal: "10 fases encaixando blocos",
 
   mount(ctx) {
 

@@ -1,12 +1,12 @@
 import { art } from "../art.js";
 import { bindPress } from "../engine.js";
-import { completePhase, phaseBanner, phaseTotal } from "../lib/phases.js";
+import { completePhase, GAME_PHASE_COUNT, phaseBanner, phaseTotal } from "../lib/phases.js";
 
-const PHASES = [
-  { hits: 2, wobble: 3, drift: 0 },
-  { hits: 3, wobble: 5, drift: 2 },
-  { hits: 4, wobble: 8, drift: 4 },
-];
+const PHASES = Array.from({ length: GAME_PHASE_COUNT }, (_, phaseIndex) => ({
+  hits: Math.min(2 + phaseIndex, 8),
+  wobble: 3 + phaseIndex,
+  drift: Math.min(Math.floor(phaseIndex / 2) * 2, 8),
+}));
 
 export const alvo = {
   id: "alvo",

@@ -11,6 +11,10 @@ const WORDS = {
   sun: { pt: "sol", art: "sun" },
   fish: { pt: "peixe", art: "fish" },
   ball: { pt: "bola", art: "ball" },
+  star: { pt: "estrela", art: "star" },
+  bird: { pt: "pássaro", art: "bird" },
+  duck: { pt: "pato", art: "duck" },
+  pig: { pt: "porco", art: "pig" },
 };
 
 const E2E_ROUNDS = [

@@ -4,7 +4,10 @@ import { phaseStartLine } from "./narrator.js";
 
 export { LEVEL_NAMES, levelName };
 
-export function phaseTotal(ctx, normal = 3) {
+/** Número padrão de fases na campanha de cada jogo. */
+export const GAME_PHASE_COUNT = 10;
+
+export function phaseTotal(ctx, normal = GAME_PHASE_COUNT) {
   if (ctx.e2e && !ctx.e2eFull) return 1;
   return normal;
 }

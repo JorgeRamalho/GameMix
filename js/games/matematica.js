@@ -13,7 +13,7 @@ export const matematica = {
 
   title: "Matemática",
 
-  goal: "Contar e somar até 5",
+  goal: "10 fases de contar e somar",
 
   mount(ctx) {
 

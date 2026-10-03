@@ -2,7 +2,7 @@ import { art } from "../art.js";
 
 import { bindPress, shuffle } from "../engine.js";
 
-import { completePhase, phaseBanner, phaseTotal } from "../lib/phases.js";
+import { completePhase, GAME_PHASE_COUNT, phaseBanner, phaseTotal } from "../lib/phases.js";
 import { pickUnique } from "../lib/playVariety.js";
 
 
@@ -29,21 +29,41 @@ const FACES = [
 
   { pair: "passaro", label: "Pássaro", art: "bird" },
 
-];
+  { pair: "cachorro", label: "Cachorro", art: "dog" },
 
+  { pair: "gato", label: "Gato", art: "cat" },
 
+  { pair: "borboleta", label: "Borboleta", art: "butterfly" },
 
-const PHASES = [
+  { pair: "nuvem", label: "Nuvem", art: "cloud" },
 
-  { pairs: 2, gridClass: "cols-2" },
-
-  { pairs: 3, gridClass: "" },
-
-  { pairs: 4, gridClass: "" },
-
-  { pairs: 5, gridClass: "mem-dense" },
+  { pair: "gota", label: "Gota", art: "drop" },
 
 ];
+
+
+
+function gridClassForPairs(pairs) {
+
+  if (pairs <= 2) return "cols-2";
+
+  if (pairs >= 9) return "mem-dense mem-wide";
+
+  if (pairs >= 5) return "mem-dense";
+
+  return "";
+
+}
+
+
+
+const PHASES = Array.from({ length: GAME_PHASE_COUNT }, (_, phaseIndex) => {
+
+  const pairs = Math.min(2 + phaseIndex, FACES.length);
+
+  return { pairs, gridClass: gridClassForPairs(pairs) };
+
+});
 
 
 
@@ -53,7 +73,7 @@ export const memoria = {
 
   title: "Memória",
 
-  goal: "Lembrar o que viu",
+  goal: "10 fases — cada vez mais cartas",
 
   mount(ctx) {
 
@@ -69,13 +89,15 @@ export const memoria = {
 
       const spec = specs[phaseIndex];
 
-      const pool = ctx.e2e
-        ? FACES.slice(0, spec.pairs)
+      const quickE2e = ctx.e2e && !ctx.e2eFull;
+
+      const pool = quickE2e
+        ? FACES.slice(0, 2)
         : pickUnique(FACES, spec.pairs, ctx.random);
 
       const base = pool.flatMap((face) => [face, face]);
 
-      const deck = ctx.e2e
+      const deck = quickE2e
 
         ? ["estrela", "maca", "maca", "estrela"]
 

@@ -2,7 +2,7 @@ import { art } from "../art.js";
 
 import { bindPress } from "../engine.js";
 
-import { completePhase, phaseBanner, phaseTotal } from "../lib/phases.js";
+import { completePhase, GAME_PHASE_COUNT, phaseBanner, phaseTotal } from "../lib/phases.js";
 import { pickUnique } from "../lib/playVariety.js";
 
 
@@ -29,15 +29,9 @@ const DIFFS = [
 
 
 
-const PHASES = [
-
-  { count: 2 },
-
-  { count: 3 },
-
-  { count: 5 },
-
-];
+const PHASES = Array.from({ length: GAME_PHASE_COUNT }, (_, phaseIndex) => ({
+  count: Math.min(2 + phaseIndex, DIFFS.length),
+}));
 
 
 

@@ -299,6 +299,15 @@ h1 {
   font-size: clamp(1.45rem, 5vw, 2.1rem);
 }
 
+.game-grid-hint {
+  display: none;
+  margin: -4px 0 12px;
+  text-align: center;
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  color: var(--ink-soft);
+}
+
 .game-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1346,6 +1355,15 @@ body[data-screen="game"] .site-footer {
   min-height: 88px;
 }
 
+.mem-grid.mem-wide {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 6px;
+}
+
+.mem-grid.mem-wide .mem-card {
+  min-height: 76px;
+}
+
 .math-board,
 .english-board {
   padding: 14px;
@@ -1528,6 +1546,35 @@ body[data-screen="game"] .site-footer {
   .btn:hover,
   .spot:hover {
     translate: 0 -2px;
+  }
+}
+
+/* Mobile: um jogo por linha — empilhados verticalmente */
+@media (max-width: 699px) {
+  .game-grid-hint {
+    display: block;
+  }
+
+  .game-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    max-width: min(440px, 100%);
+    margin-inline: auto;
+  }
+
+  .game-grid > li > .game-card {
+    width: 100%;
+    min-height: 200px;
+    padding: 18px 14px 16px;
+  }
+
+  .game-figure {
+    width: min(100%, 132px);
+    min-height: 100px;
+  }
+
+  .game-emoji-main {
+    font-size: clamp(2.4rem, 11vw, 3rem);
   }
 }
 

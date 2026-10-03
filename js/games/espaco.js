@@ -39,7 +39,7 @@ function formatLives(n) {
 export const espaco = {
   id: "espaco",
   title: "Guerra espacial",
-  goal: "7 fases, 10 vidas — atire, desvie e use o escudo",
+  goal: "10 fases, 10 vidas — atire, desvie e use o escudo",
   mount(ctx) {
     const totalPhases = phaseTotal(ctx, SPACE_PHASE_COUNT);
     let campaignLives = SPACE_START_LIVES;
@@ -237,7 +237,7 @@ export const espaco = {
             phaseIndex,
             totalPhases,
             runPhase,
-            "Você venceu as 7 fases e salvou a galáxia!",
+            "Você venceu as 10 fases e salvou a galáxia!",
           );
         }
         syncHud();

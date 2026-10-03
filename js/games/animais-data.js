@@ -1,3 +1,5 @@
+import { GAME_PHASE_COUNT } from "../lib/phases.js";
+
 /**
  * Catálogo de animais com fotos reais (Wikimedia Commons) em /assets/animals/.
  */
@@ -29,37 +31,24 @@ export function animalsForPhase(ids) {
   return ids.map((id) => byId.get(id)).filter(Boolean);
 }
 
-/** Fases com conjuntos alternados de bichos (fazenda → campo → mistura). */
-export const ANIMAL_PHASES = [
-  {
-    rounds: 2,
-    options: 2,
-    ids: ["cao", "gato", "pato", "galinha"],
-  },
-  {
-    rounds: 3,
-    options: 3,
-    ids: ["vaca", "porco", "ovelha", "coelho", "cavalo", "passaro"],
-  },
-  {
-    rounds: 4,
-    options: 3,
-    ids: [
-      "cao",
-      "gato",
-      "elefante",
-      "leao",
-      "macaco",
-      "peixe",
-      "pato",
-      "vaca",
-      "porco",
-      "galinha",
-      "coelho",
-      "passaro",
-    ],
-  },
-];
+/** Fases com mais rodadas, opções e bichos conforme avança a campanha. */
+export function buildAnimalPhases(phaseCount = GAME_PHASE_COUNT) {
+  const allIds = ANIMALS.map((animal) => animal.id);
+  return Array.from({ length: phaseCount }, (_, phaseIndex) => {
+    const rounds = Math.min(2 + Math.floor(phaseIndex / 2), 5);
+    const options = Math.min(2 + Math.floor(phaseIndex / 4), 3);
+    const poolSize = Math.min(4 + phaseIndex, allIds.length);
+    const offset = (phaseIndex * 2) % allIds.length;
+    const ids = [];
+    for (let k = 0; k < poolSize; k += 1) {
+      const id = allIds[(offset + k) % allIds.length];
+      if (!ids.includes(id)) ids.push(id);
+    }
+    return { rounds, options, ids };
+  });
+}
+
+export const ANIMAL_PHASES = buildAnimalPhases();
 
 export const E2E_ANIMAL_PHASE = {
   rounds: 1,

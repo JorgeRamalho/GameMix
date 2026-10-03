@@ -1,6 +1,6 @@
 import { art } from "../art.js";
 import { bindPress, shuffle } from "../engine.js";
-import { completePhase, phaseBanner, phaseTotal } from "../lib/phases.js";
+import { completePhase, GAME_PHASE_COUNT, phaseBanner, phaseTotal } from "../lib/phases.js";
 import { pickUnique } from "../lib/playVariety.js";
 
 const PLACES = [
@@ -12,11 +12,10 @@ const PLACES = [
   { id: "flor", name: "Flor", art: "flowerRed" },
 ];
 
-const PHASES = [
-  { spots: 4, treasures: 2 },
-  { spots: 6, treasures: 3 },
-  { spots: 6, treasures: 4 },
-];
+const PHASES = Array.from({ length: GAME_PHASE_COUNT }, (_, phaseIndex) => ({
+  spots: Math.min(4 + Math.floor(phaseIndex / 2), PLACES.length),
+  treasures: Math.min(2 + Math.floor(phaseIndex / 2), 5),
+}));
 
 function buildFlags(treasures, spots, random, e2e) {
   if (e2e) return [true, false, true, false];

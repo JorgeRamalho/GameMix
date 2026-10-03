@@ -1,6 +1,6 @@
 import { bindPress, speakPortuguese } from "../engine.js";
 import { onChoice } from "../lib/gameActions.js";
-import { completePhase, phaseBanner, phaseTotal } from "../lib/phases.js";
+import { completePhase, GAME_PHASE_COUNT, phaseBanner, phaseTotal } from "../lib/phases.js";
 import { rotateList } from "../lib/playVariety.js";
 import { SCENES, SCENE_EMOJI } from "./colorir-scenes.js";
 
@@ -35,11 +35,20 @@ const ERASER_ICON = `<svg class="eraser-icon" viewBox="0 0 64 64" aria-hidden="t
   <rect x="8" y="46" width="48" height="8" rx="3" fill="#dee2e6" stroke="${INK}" stroke-width="2"/>
 </svg>`;
 
-const PHASES = [
+const COLORIR_CAMPAIGN = [
   { scene: "borboleta", regions: ["asa-esquerda", "asa-direita"], requireMix: false },
   { scene: "casa", regions: ["telhado", "parede", "porta"], requireMix: false },
+  { scene: "peixe", regions: ["corpo", "cauda", "barbatana"], requireMix: false },
+  { scene: "balao", regions: ["balao", "cesta"], requireMix: false },
+  { scene: "sol", regions: ["sol", "nuvem"], requireMix: false },
+  { scene: "lua", regions: ["ceu", "lua"], requireMix: false },
+  { scene: "carro", regions: ["carroceria", "capota", "janela"], requireMix: false },
+  { scene: "barco", regions: ["casco", "vela", "mastro"], requireMix: false },
+  { scene: "estrela", regions: ["fundo", "estrela"], requireMix: false },
   { scene: "flor", regions: ["petala-n", "petala-s", "centro", "caule"], requireMix: true },
 ];
+
+const PHASES = COLORIR_CAMPAIGN.slice(0, GAME_PHASE_COUNT);
 
 const E2E_PHASE = { scene: "borboleta", regions: ["asa-esquerda", "asa-direita", "corpo"], requireMix: true };
 
@@ -76,13 +85,15 @@ function sceneSvg(scene) {
 export const colorir = {
   id: "colorir",
   title: "Colorir",
-  goal: "Misturar cores e pintar",
+  goal: "10 desenhos para colorir",
   mount(ctx) {
     const totalPhases = phaseTotal(ctx);
     const specs =
       ctx.e2e && !ctx.e2eFull
         ? [E2E_PHASE]
-        : rotateList(PHASES, ctx.runIndex).slice(0, totalPhases);
+        : ctx.e2eFull
+          ? PHASES.slice(0, totalPhases)
+          : rotateList(PHASES, ctx.runIndex).slice(0, totalPhases);
 
     const runPhase = (phaseIndex) => {
       const signal = ctx.beginPhase();

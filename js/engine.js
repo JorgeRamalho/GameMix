@@ -35,7 +35,7 @@ const HOME_TITLE = "GameKids — jogos infantis de 3 a 5 anos";
 
 const searchParams = new URLSearchParams(location.search);
 export const E2E = searchParams.has("e2e");
-/** Testes longos: três fases como no jogo real (`?e2e=1&e2eFull=1`). */
+/** Testes longos: campanha completa (`?e2e=1&e2eFull=1`). */
 export const E2E_FULL = E2E && searchParams.has("e2eFull");
 
 let soundOn = true;

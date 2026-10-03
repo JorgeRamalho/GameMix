@@ -2,13 +2,14 @@ import { art } from "../art.js";
 import { bindInstantPress, playSfx } from "../engine.js";
 import { createSpaceFxCanvas } from "../lib/arcade/spaceFxCanvas.js";
 import { streakLabel } from "../lib/gameExperience.js";
-import { completePhase, phaseBanner, phaseTotal } from "../lib/phases.js";
+import { completePhase, GAME_PHASE_COUNT, phaseBanner, phaseTotal } from "../lib/phases.js";
 
-const PHASES = [
-  { goal: 5, speed: 1.1, spawnMs: 2000, obstacleRate: 0.2 },
-  { goal: 8, speed: 1.6, spawnMs: 1650, obstacleRate: 0.32 },
-  { goal: 11, speed: 2.1, spawnMs: 1350, obstacleRate: 0.4 },
-];
+const PHASES = Array.from({ length: GAME_PHASE_COUNT }, (_, phaseIndex) => ({
+  goal: 5 + phaseIndex * 2,
+  speed: 1.1 + phaseIndex * 0.14,
+  spawnMs: Math.max(750, 2000 - phaseIndex * 125),
+  obstacleRate: Math.min(0.18 + phaseIndex * 0.035, 0.52),
+}));
 
 const E2E_SPEC = { goal: 3, speed: 1.4, spawnMs: 450, obstacleRate: 0 };
 

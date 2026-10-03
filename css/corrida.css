@@ -1,0 +1,212 @@
+/* Corrida — mesma arena visual da Guerra Espacial (sem tiro/escudo) */
+
+.game-view[data-game-id="corrida"] .space-arena {
+  position: relative;
+  overflow: hidden;
+  min-height: min(56vh, 380px);
+  border: 4px solid #51cf66;
+  border-radius: 20px;
+  background: #0d1f14;
+  box-shadow:
+    0 8px 0 var(--ink),
+    inset 0 0 60px rgb(81 207 102 / 0.2);
+  transition: filter 0.12s ease;
+}
+
+.game-view[data-game-id="corrida"] .space-nebula {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.game-view[data-game-id="corrida"] .space-nebula--road {
+  background:
+    radial-gradient(ellipse 70% 45% at 30% 25%, rgb(81 207 102 / 0.35), transparent 70%),
+    radial-gradient(ellipse 55% 40% at 80% 75%, rgb(255 224 74 / 0.15), transparent 65%),
+    linear-gradient(180deg, #0d1f14 0%, #1a3d2a 45%, #0f2419 100%);
+}
+
+.game-view[data-game-id="corrida"] .space-arena.is-rush {
+  filter: saturate(1.25) contrast(1.04);
+}
+
+.game-view[data-game-id="corrida"] .space-arena.is-flash-ok {
+  filter: brightness(1.2);
+}
+
+.game-view[data-game-id="corrida"] .space-arena.is-flash-hit {
+  filter: brightness(0.88) hue-rotate(-8deg);
+}
+
+.game-view[data-game-id="corrida"] .space-arena.is-shake {
+  animation: space-shake 0.35s ease;
+}
+
+.game-view[data-game-id="corrida"] .space-fx {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 4;
+}
+
+.game-view[data-game-id="corrida"] .space-parallax {
+  position: absolute;
+  inset: -20% 0;
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.game-view[data-game-id="corrida"] .space-parallax--far {
+  background-image:
+    radial-gradient(1px 1px at 10% 20%, #fff 99%, transparent),
+    radial-gradient(1.5px 1.5px at 80% 10%, #fff 99%, transparent);
+  animation: space-drift-far 48s linear infinite;
+}
+
+.game-view[data-game-id="corrida"] .space-parallax--mid {
+  opacity: 0.7;
+  background-image:
+    radial-gradient(2px 2px at 25% 35%, #b2f2bb 99%, transparent),
+    radial-gradient(2px 2px at 70% 60%, #fff 99%, transparent);
+  animation: space-drift-mid 32s linear infinite;
+}
+
+.game-view[data-game-id="corrida"] .space-lanes-glow {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.game-view[data-game-id="corrida"] .space-lanes-glow span:last-child {
+  border-right: none;
+}
+
+.game-view[data-game-id="corrida"] .space-hud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  justify-content: center;
+}
+
+.game-view[data-game-id="corrida"] .space-lanes-glow span {
+  border-right: 1px solid rgb(81 207 102 / 0.25);
+  background: linear-gradient(180deg, transparent, rgb(81 207 102 / 0.08), transparent);
+  transition: background 0.15s ease, box-shadow 0.15s ease;
+}
+
+.game-view[data-game-id="corrida"] .space-lanes-glow span.is-active {
+  background: linear-gradient(180deg, rgb(255 224 74 / 0.1), rgb(81 207 102 / 0.22), rgb(255 224 74 / 0.08));
+  box-shadow: inset 0 0 24px rgb(81 207 102 / 0.25);
+}
+
+.game-view[data-game-id="corrida"] .space-hud .race-stat {
+  background: rgb(13 31 20 / 0.88);
+  color: #fff;
+  border: 2px solid #51cf66;
+  border-radius: 14px;
+  padding: 6px 12px;
+}
+
+.game-view[data-game-id="corrida"] .corrida-car {
+  z-index: 3;
+  filter: drop-shadow(0 0 10px rgb(81 207 102 / 0.5));
+  transition: left 0.1s cubic-bezier(0.2, 0.9, 0.3, 1.2);
+}
+
+.game-view[data-game-id="corrida"] .race-entity {
+  left: calc((var(--lane, 1) * 2 + 1) * 100% / 6);
+  margin-left: -26px;
+}
+
+.game-view[data-game-id="corrida"] .space-touch {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.game-view[data-game-id="corrida"] .space-touch-btn {
+  pointer-events: auto;
+  border: 0;
+  background: transparent;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.game-view[data-game-id="corrida"] .space-controls--corrida {
+  position: relative;
+  z-index: 6;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  max-width: 420px;
+  margin: 0 auto;
+}
+
+.game-view[data-game-id="corrida"] .space-steer {
+  background: linear-gradient(180deg, #fff3bf, #ffe14a);
+  border: 3px solid var(--ink);
+  font-size: 1.85rem;
+  min-height: 76px;
+  touch-action: manipulation;
+}
+
+.game-view[data-game-id="corrida"] .space-steer:active {
+  transform: scale(0.96);
+  background: linear-gradient(180deg, #ffe14a, #ff922b);
+}
+
+@keyframes space-shake {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+
+  25% {
+    transform: translate(-4px, 2px);
+  }
+
+  50% {
+    transform: translate(4px, -2px);
+  }
+
+  75% {
+    transform: translate(-2px, -3px);
+  }
+}
+
+@keyframes space-drift-far {
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(12%);
+  }
+}
+
+@keyframes space-drift-mid {
+  from {
+    transform: translateY(-5%);
+  }
+
+  to {
+    transform: translateY(18%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .game-view[data-game-id="corrida"] .space-parallax--far,
+  .game-view[data-game-id="corrida"] .space-parallax--mid,
+  .game-view[data-game-id="corrida"] .space-arena.is-shake {
+    animation: none !important;
+  }
+}

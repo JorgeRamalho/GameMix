@@ -88,15 +88,11 @@ test("memória forma os pares e guarda estrelas", async ({ page }) => {
   await expect(page.locator("[data-stars]")).toHaveText("3");
 });
 
-test("sete erros marca as diferenças da fase", async ({ page }) => {
-  await openGame(page, "^Erros");
-  const diffs = page.locator("[data-diff]");
-  await expect(diffs).toHaveCount(2);
-  const total = await diffs.count();
-  for (let index = 0; index < total; index += 1) {
-    await diffs.nth(index).click();
-  }
-  await expect(page.locator("[data-found]")).toHaveText("2 de 2");
+test("tetris mostra prévias e limpa linha na fase", async ({ page }) => {
+  await openGame(page, "^Tetris");
+  await expect(page.locator("[data-next-preview]")).toBeVisible();
+  const { completeTetrisPhase } = await import("./helpers.js");
+  await completeTetrisPhase(page);
   await expect(page.locator("[data-result=win]")).toBeVisible();
 });
 

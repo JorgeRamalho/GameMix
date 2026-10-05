@@ -7,7 +7,6 @@ import {
   openGame,
   winAlvoPhases,
   winByCorrectChoices,
-  winErrosPhases,
   winEspacoCampaign,
   winFutebolPhases,
   winInglesPhases,
@@ -17,6 +16,7 @@ import {
   winQuebraPhases,
   waitNextPhase,
   winTesouroPhases,
+  winTetrisPhases,
 } from "./helpers.js";
 
 test.beforeEach(({ }, testInfo) => {
@@ -58,10 +58,10 @@ test("pescaria completa as dez fases", async ({ page }) => {
   await expect(page.locator("[data-result=win]")).toBeVisible();
 });
 
-test("sete erros completa as dez fases", async ({ page }) => {
-  test.setTimeout(180000);
-  await openGame(page, "^Erros", { fullPhases: true });
-  await winErrosPhases(page, CAMPAIGN_PHASES);
+test("tetris completa as dez fases", async ({ page }) => {
+  test.setTimeout(240000);
+  await openGame(page, "^Tetris", { fullPhases: true });
+  await winTetrisPhases(page, CAMPAIGN_PHASES);
   await expect(page.locator("[data-result=win]")).toBeVisible();
 });
 

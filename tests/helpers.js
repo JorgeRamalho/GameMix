@@ -140,14 +140,18 @@ export async function winPescariaPhases(page, phases = CAMPAIGN_PHASES) {
   }
 }
 
-export async function winErrosPhases(page, phases = CAMPAIGN_PHASES) {
+export async function completeTetrisPhase(page) {
+  const goal = Number(await page.locator("[data-lines-goal]").textContent()) || 1;
+  for (let i = 0; i < goal; i += 1) {
+    await page.keyboard.press(" ");
+    await page.waitForTimeout(400);
+  }
+}
+
+export async function winTetrisPhases(page, phases = CAMPAIGN_PHASES) {
   for (let phase = 0; phase < phases; phase += 1) {
     await expect(page.locator("[data-phase-bar]")).toContainText(`Fase ${phase + 1} de ${phases}`);
-    const diffs = page.locator("[data-diff]");
-    const total = await diffs.count();
-    for (let index = 0; index < total; index += 1) {
-      await diffs.nth(index).click();
-    }
+    await completeTetrisPhase(page);
     await waitNextPhase(page, phase, phases);
   }
 }

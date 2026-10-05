@@ -358,7 +358,7 @@ h1 {
   line-height: 1;
   filter: drop-shadow(1px 2px 0 rgb(43 42 74 / 12%));
 }
-.game-card[data-game="erros"] { --card: #ffa8a8; }
+.game-card[data-game="tetris"] { --card: #74c0fc; }
 .game-card[data-game="matematica"] { --card: #66d9e8; }
 .game-card[data-game="ingles"] { --card: #ffd43b; }
 .game-card[data-game="ligar"] { --card: #63e6be; }
@@ -1982,6 +1982,205 @@ html[data-e2e] .fish {
 
 .block-piece.is-used {
   display: none;
+}
+
+.game-view[data-game-id="tetris"] {
+  width: 100%;
+  max-width: min(100%, 560px);
+  margin-inline: auto;
+}
+
+.tetris-hud {
+  display: flex;
+  justify-content: center;
+  margin: 6px 0 4px;
+}
+
+.tetris-stat {
+  margin: 0;
+  font-size: 1.05rem;
+}
+
+.tetris-stage {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    "next"
+    "board";
+  align-items: center;
+  justify-items: center;
+  gap: 10px;
+  width: 100%;
+  max-width: min(100%, 540px);
+  margin: 0 auto;
+}
+
+.tetris-frame {
+  grid-area: board;
+  width: 100%;
+}
+
+.tetris-queue {
+  grid-area: next;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  max-width: min(100%, 540px);
+  padding: 8px 12px;
+  border-radius: 12px;
+  border: 3px solid var(--ink);
+  background: #f1f3f5;
+  box-shadow: var(--shadow);
+  box-sizing: border-box;
+}
+
+.tetris-queue-label {
+  margin: 0;
+  font-size: 0.8rem;
+  font-weight: 800;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  flex-shrink: 0;
+}
+
+.tetris-mini {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 3px;
+  width: 76px;
+  padding: 6px;
+  border-radius: 8px;
+  background: #0a0a0a;
+}
+
+.tetris-mini-cell {
+  aspect-ratio: 1;
+  border-radius: 2px;
+  background: rgb(255 255 255 / 0.05);
+}
+
+.tetris-mini-cell.is-on {
+  background: var(--cell);
+  border: 2px solid var(--ink);
+  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.35);
+}
+
+.game-view[data-game-id="tetris"] .tetris-frame {
+  width: 100%;
+  padding: 10px;
+  border-radius: var(--radius);
+  border: 4px solid var(--ink);
+  background: linear-gradient(180deg, #4a4a4a 0%, #2b2b2b 100%);
+  box-shadow: var(--shadow);
+}
+
+.tetris-frame.is-line-clear {
+  animation: tetris-flash 0.34s ease;
+}
+
+@keyframes tetris-flash {
+  0% {
+    filter: brightness(1);
+  }
+  45% {
+    filter: brightness(1.38);
+  }
+  100% {
+    filter: brightness(1);
+  }
+}
+
+.game-view[data-game-id="tetris"] .tetris-grid {
+  display: grid;
+  grid-template-columns: repeat(10, minmax(0, 1fr));
+  gap: 3px;
+  width: 100%;
+  aspect-ratio: 10 / 18;
+  max-height: min(72dvh, 580px);
+  padding: 6px;
+  border-radius: 8px;
+  background: #0a0a0a;
+  box-sizing: border-box;
+}
+
+.game-view[data-game-id="tetris"] .tetris-cell {
+  width: 100%;
+  height: 100%;
+  min-height: 12px;
+  border-radius: 4px;
+  background: rgb(255 255 255 / 0.05);
+  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.08);
+}
+
+.game-view[data-game-id="tetris"] .tetris-cell.is-live,
+.game-view[data-game-id="tetris"] .tetris-cell.is-locked {
+  background: var(--cell);
+  border: 2px solid var(--ink);
+  box-shadow:
+    inset 0 0 0 2px rgb(255 255 255 / 0.35),
+    0 2px 0 rgb(0 0 0 / 0.2);
+}
+
+.game-view[data-game-id="tetris"] .tetris-cell.is-ghost {
+  background: color-mix(in srgb, var(--cell) 26%, transparent);
+  border: 2px dashed color-mix(in srgb, var(--cell) 75%, var(--ink));
+}
+
+.game-view[data-game-id="tetris"] .tetris-controls {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 12px;
+  align-items: stretch;
+  width: 100%;
+  max-width: min(100%, 480px);
+  margin: 14px auto 0;
+}
+
+.game-view[data-game-id="tetris"] .tetris-btn--rotate {
+  min-width: 5.5rem;
+  justify-self: center;
+}
+
+.game-view[data-game-id="tetris"] .tetris-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  min-height: 64px;
+  padding: 8px 4px;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+
+.tetris-btn-icon {
+  font-size: 1.25rem;
+  line-height: 1;
+}
+
+.tetris-btn-text {
+  font-size: 0.62rem;
+  font-weight: 800;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
+@media (max-width: 420px) {
+  .tetris-stage {
+    max-width: 100%;
+  }
+
+  .game-view[data-game-id="tetris"] .tetris-grid {
+    max-height: min(68dvh, 520px);
+  }
+
+  .game-view[data-game-id="tetris"] .tetris-btn-text {
+    font-size: 0.55rem;
+  }
 }
 
 /* Pênalti: ver css/futebol.css */

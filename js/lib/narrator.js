@@ -9,7 +9,7 @@ const GAME_INTROS = {
   alvo: `Este é o tiro ao alvo. Toque na estrela quando ela aparecer, mirando com calma. ${UNDERSTOOD_QUESTION}`,
   quebra: `Este é o quebra-cabeça. Toque duas peças para trocar de lugar e montar o desenho. ${UNDERSTOOD_QUESTION}`,
   memoria: `Este é o jogo da memória. Abra as cartinhas e ache os pares iguais. ${UNDERSTOOD_QUESTION}`,
-  erros: `Este é o jogo dos sete erros. Toque no que está diferente entre os dois lados. ${UNDERSTOOD_QUESTION}`,
+  tetris: `Este é o Tetris. Use esquerda, direita e girar para encaixar as peças. Olhe a próxima peça ao lado e complete as linhas da fase! ${UNDERSTOOD_QUESTION}`,
   matematica: `Este é o jogo de contar de matemática. Nele você tem que adivinhar os números e falar eles em voz alta. ${UNDERSTOOD_QUESTION}`,
   ingles: `Este é o jogo de inglês. Ouça a palavra, aprenda o significado em português e escolha a figura certa. ${UNDERSTOOD_QUESTION}`,
   ligar: `Este é o jogo de ligar os pares. Toque de um lado e depois no desenho que combina. ${UNDERSTOOD_QUESTION}`,

@@ -21,7 +21,7 @@ test.describe("SEO e conteúdo", () => {
     expect(data.inLanguage).toBe("pt-BR");
     await expect(page.locator("h1")).toHaveCount(1);
     await expect(page.locator("main")).toHaveCount(1);
-    await expect(page.locator("[data-game]")).toHaveCount(15);
+    await expect(page.locator("[data-game]")).toHaveCount(14);
     const robots = await page.request.get("/robots.txt");
     expect(await robots.text()).toContain("Allow");
   });
@@ -118,8 +118,8 @@ test.describe("Identidade visual, tipografia e responsivo", () => {
     test.info().annotations.push({ type: "eixo", description: "Responsividade e layout" });
     await openHome(page);
     await expectNoHorizontalOverflow(page);
-    await page.getByRole("link", { name: /Erros/i }).click();
-    await expect(page.locator("[data-goal]")).toContainText(/comparar/i);
+    await page.getByRole("link", { name: /Quebra/i }).click();
+    await expect(page.locator("[data-goal]")).toContainText(/montar/i);
     await expectNoHorizontalOverflow(page);
     await page.getByRole("button", { name: "Voltar", exact: true }).click();
     await expectNoHorizontalOverflow(page);

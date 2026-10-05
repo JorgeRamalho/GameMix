@@ -47,6 +47,11 @@ export function phaseTransitionOut(ctx, next) {
   ctx.later(() => {
     if (!ctx.alive || ctx.won) return;
     next();
+    /* Tetris (e outros) que avançam fase sem remontar o DOM mantêm gx-phase-out + opacity presos. */
+    if (ctx.view?.classList.contains("gx-phase-out")) {
+      ctx.view.classList.remove("gx-phase-out");
+      afterPhaseRender(ctx);
+    }
   }, 280);
 }
 

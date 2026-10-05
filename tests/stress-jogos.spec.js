@@ -9,7 +9,7 @@ const GAME_IDS = [
   "alvo",
   "quebra",
   "memoria",
-  "erros",
+  "tetris",
   "matematica",
   "ingles",
   "ligar",

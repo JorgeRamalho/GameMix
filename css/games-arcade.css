@@ -172,15 +172,10 @@
   box-shadow: var(--shadow);
 }
 
-/* Erros — parque */
-.game-view[data-game-id="erros"] .park-stroll {
+.game-view[data-game-id="tetris"] .tetris-frame {
   border: 3px solid var(--ink);
-  border-radius: 16px;
+  border-radius: var(--radius);
   box-shadow: var(--shadow);
-}
-
-.game-view[data-game-id="erros"] .park-play .thing.is-found {
-  animation: gx-pop-ok 0.4s ease;
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -1984,6 +1984,463 @@ html[data-e2e] .fish {
   display: none;
 }
 
+/* Blocos — UX visual (3–5 anos, pouca leitura) */
+.game-view[data-game-id="blocos"] .blocos-hint-caregiver {
+  font-size: 0.78rem;
+  opacity: 0.82;
+  margin-top: 6px;
+}
+
+.game-view[data-game-id="blocos"] .blocos-tray-label {
+  margin: 4px 0 0;
+  font-size: 1.75rem;
+  text-align: center;
+  line-height: 1;
+}
+
+.game-view[data-game-id="blocos"] .blocos-play-hint {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+  margin: 8px 0 4px;
+  padding: 10px 12px;
+  border: 3px solid var(--ink);
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: var(--shadow);
+}
+
+.game-view[data-game-id="blocos"] .blocos-play-hint__chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 1.35rem;
+}
+
+.game-view[data-game-id="blocos"] .blocos-play-hint__emoji {
+  font-size: 1.65rem;
+  line-height: 1;
+}
+
+.game-view[data-game-id="blocos"] .blocos-play-hint__then {
+  font-size: 1.5rem;
+}
+
+.game-view[data-game-id="blocos"] .blocos-modes {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin: 0 0 12px;
+}
+
+.game-view[data-game-id="blocos"] .blocos-mode-tab {
+  flex: 1 1 7.5rem;
+  max-width: 10.5rem;
+  min-height: 76px;
+  padding: 8px 6px 10px;
+  border: 3px solid var(--ink);
+  border-radius: 16px;
+  background: #fff;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.game-view[data-game-id="blocos"] .blocos-mode-tab__icon {
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.game-view[data-game-id="blocos"] .blocos-mode-tab__mini {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  min-height: 22px;
+}
+
+.game-view[data-game-id="blocos"] .blocos-demo-block {
+  width: 14px;
+  height: 14px;
+  border-radius: 4px;
+  background: #ff6b6b;
+  border: 2px solid var(--ink);
+}
+
+.game-view[data-game-id="blocos"] .blocos-demo-arrow {
+  font-size: 0.65rem;
+  color: var(--ink);
+}
+
+.game-view[data-game-id="blocos"] .blocos-demo-slot {
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+  border: 2px dashed var(--ink);
+  background: #ffe14a55;
+}
+
+.game-view[data-game-id="blocos"] .blocos-demo-stack {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 2px;
+}
+
+.game-view[data-game-id="blocos"] .blocos-demo-stack i {
+  display: block;
+  width: 18px;
+  height: 6px;
+  border-radius: 3px;
+  border: 2px solid var(--ink);
+  background: #74c0fc;
+}
+
+.game-view[data-game-id="blocos"] .blocos-mode-tab--encaixar[aria-selected="true"] {
+  background: linear-gradient(180deg, #fff3bf, #ffe14a);
+}
+
+.game-view[data-game-id="blocos"] .blocos-mode-tab--torres[aria-selected="true"] {
+  background: linear-gradient(180deg, #d0ebff, #74c0fc);
+}
+
+.game-view[data-game-id="blocos"] .blocos-mode-intro {
+  text-align: center;
+  padding: 4px 4px 12px;
+}
+
+.game-view[data-game-id="blocos"] .blocos-mode-intro__hero {
+  margin: 0;
+  font-size: clamp(2.5rem, 10vw, 3.25rem);
+  line-height: 1.1;
+}
+
+.game-view[data-game-id="blocos"] .blocos-mode-intro__pick {
+  margin: 0 0 10px;
+  font-size: 2rem;
+  line-height: 1;
+  animation: blocos-bounce 1.2s ease-in-out infinite;
+}
+
+@keyframes blocos-bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(6px);
+  }
+}
+
+.game-view[data-game-id="blocos"] .blocos-mode-intro__actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.game-view[data-game-id="blocos"] .blocos-mode-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  min-height: 168px;
+  padding: 12px 8px 10px;
+  border: 4px solid var(--ink);
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: var(--shadow);
+  cursor: pointer;
+}
+
+.game-view[data-game-id="blocos"] .blocos-mode-card--encaixar {
+  background: linear-gradient(165deg, #fff 0%, #fff9db 100%);
+}
+
+.game-view[data-game-id="blocos"] .blocos-mode-card--torres {
+  background: linear-gradient(165deg, #fff 0%, #e7f5ff 100%);
+}
+
+.game-view[data-game-id="blocos"] .blocos-mode-card__badge {
+  font-size: 2.25rem;
+  line-height: 1;
+}
+
+.game-view[data-game-id="blocos"] .blocos-mode-card__figure {
+  min-height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.game-view[data-game-id="blocos"] .blocos-figure-fit {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.game-view[data-game-id="blocos"] .blocos-figure-fit__pieces {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.game-view[data-game-id="blocos"] .blocos-figure-fit__block {
+  width: 26px;
+  height: 26px;
+  border-radius: 8px;
+  border: 3px solid var(--ink);
+  flex-shrink: 0;
+}
+
+.game-view[data-game-id="blocos"] .blocos-figure-fit__block--a {
+  background: #4dabf7;
+}
+
+.game-view[data-game-id="blocos"] .blocos-figure-fit__block--b {
+  background: #9b6bff;
+}
+
+.game-view[data-game-id="blocos"] .blocos-figure-fit__arrow {
+  font-size: 1.25rem;
+}
+
+.game-view[data-game-id="blocos"] .blocos-figure-fit__targets {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.game-view[data-game-id="blocos"] .blocos-figure-fit__hole {
+  width: 28px;
+  height: 28px;
+  border-radius: 10px;
+  border: 3px dashed var(--ink);
+  flex-shrink: 0;
+  box-sizing: border-box;
+}
+
+.game-view[data-game-id="blocos"] .blocos-figure-fit__hole--a {
+  background: #4dabf733;
+}
+
+.game-view[data-game-id="blocos"] .blocos-figure-fit__hole--b {
+  background: #9b6bff33;
+}
+
+.game-view[data-game-id="blocos"] .blocos-figure-towers {
+  display: flex;
+  align-items: flex-end;
+  gap: 6px;
+  height: 52px;
+}
+
+.game-view[data-game-id="blocos"] .blocos-figure-towers__col {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 2px;
+}
+
+.game-view[data-game-id="blocos"] .blocos-figure-towers__col i {
+  display: block;
+  width: 22px;
+  height: 10px;
+  border-radius: 4px;
+  border: 2px solid var(--ink);
+  background: #ff922b;
+}
+
+.game-view[data-game-id="blocos"] .blocos-figure-towers__col--tall i:nth-child(2) {
+  background: #ff6b6b;
+}
+
+.game-view[data-game-id="blocos"] .blocos-mode-card__steps {
+  display: flex;
+  gap: 8px;
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.game-view[data-game-id="blocos"] .block-piece {
+  position: relative;
+}
+
+.game-view[data-game-id="blocos"] .block-piece__emoji {
+  position: absolute;
+  right: 3px;
+  bottom: 2px;
+  font-size: 1rem;
+  line-height: 1;
+  pointer-events: none;
+  filter: drop-shadow(0 0 2px #fff);
+}
+
+.game-view[data-game-id="blocos"] .block-slot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.game-view[data-game-id="blocos"] .block-slot__want {
+  font-size: 1.85rem;
+  line-height: 1;
+  z-index: 1;
+}
+
+.game-view[data-game-id="blocos"] .block-slot__swatch {
+  position: absolute;
+  inset: 18%;
+  border-radius: 10px;
+  background: var(--want, #ccc);
+  opacity: 0.35;
+  z-index: 0;
+}
+
+.game-view[data-game-id="blocos"] .block-slot.is-filled .block-slot__want,
+.game-view[data-game-id="blocos"] .block-slot.is-filled .block-slot__swatch {
+  display: none;
+}
+
+.game-view[data-game-id="blocos"] .block-tower-yard {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 6px;
+  align-items: end;
+  margin: 12px auto;
+  max-width: 360px;
+  min-height: min(42vh, 300px);
+  padding: 12px 8px;
+  border: 3px solid var(--ink);
+  border-radius: var(--radius);
+  background: linear-gradient(180deg, #e9ecef 0%, #dee2e6 100%);
+  box-shadow: var(--shadow);
+}
+
+.game-view[data-game-id="blocos"] .block-tower-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  min-width: 0;
+}
+
+.game-view[data-game-id="blocos"] .block-tower-stack {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 3px;
+  width: 100%;
+  min-height: 180px;
+  max-height: min(36vh, 260px);
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 2px 0;
+}
+
+.game-view[data-game-id="blocos"] .block-stack-piece {
+  display: block;
+  width: min(100%, 52px);
+  height: 38px;
+  border-radius: 8px;
+  border: 3px solid var(--ink);
+  background: var(--block);
+  box-shadow: inset 0 -3px 0 rgb(0 0 0 / 0.12);
+  flex-shrink: 0;
+}
+
+.game-view[data-game-id="blocos"] .block-tower-base {
+  width: min(100%, 58px);
+  min-height: 36px;
+  padding: 4px 0 2px;
+  border: 3px solid var(--ink);
+  border-radius: 10px;
+  background: #495057;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+}
+
+.game-view[data-game-id="blocos"] .block-tower-base__ico {
+  font-size: 1.35rem;
+  line-height: 1;
+  opacity: 0.95;
+}
+
+.game-view[data-game-id="blocos"] .block-tower-base.is-highlight {
+  outline: 3px solid #5c7cfa;
+  outline-offset: 2px;
+}
+
+.game-view[data-game-id="blocos"] .block-tower-base:disabled {
+  cursor: default;
+  opacity: 0.85;
+}
+
+.game-view[data-game-id="blocos"] .block-tower-pop {
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: 2px solid var(--ink);
+  border-radius: 8px;
+  background: #fff;
+  font-size: 1.1rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.game-view[data-game-id="blocos"] .block-tower-pop:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.game-view[data-game-id="blocos"] .block-tray--free .block-piece--free {
+  opacity: 1;
+}
+
+.game-view[data-game-id="blocos"] .blocos-tower-actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.game-view[data-game-id="blocos"] .blocos-clear-btn {
+  font-size: 1.75rem;
+  min-height: 52px;
+  min-width: 52px;
+  padding: 8px 14px;
+}
+
+@media (max-width: 380px) {
+  .game-view[data-game-id="blocos"] .blocos-mode-intro__actions {
+    grid-template-columns: 1fr;
+    max-width: 220px;
+  }
+  .game-view[data-game-id="blocos"] .block-stack-piece {
+    height: 32px;
+  }
+
+  .game-view[data-game-id="blocos"] .block-tower-stack {
+    min-height: 140px;
+  }
+
+  .game-view[data-game-id="blocos"] .blocos-mode-intro__actions {
+    max-width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .game-view[data-game-id="blocos"] .blocos-mode-intro__pick {
+    animation: none !important;
+  }
+}
+
 .game-view[data-game-id="tetris"] {
   width: 100%;
   max-width: min(100%, 560px);

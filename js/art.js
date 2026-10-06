@@ -161,6 +161,12 @@ export const art = {
     `<polygon points="32,10 48,50 16,50" fill="#ff922b" stroke="${INK}" stroke-width="3" stroke-linejoin="round"/>
      <rect x="14" y="50" width="36" height="6" rx="2" fill="${INK}"/>`,
   ),
+  /** Obstáculo na pista (mesmo papel do cone). */
+  fire: icon(
+    `<path d="M32 6 C40 18 42 30 38 40 C44 34 46 46 40 54 C42 48 38 46 32 52 C26 46 22 48 24 54 C18 46 20 34 26 40 C22 30 24 18 32 6 Z" fill="#ff6b6b" stroke="${INK}" stroke-width="3" stroke-linejoin="round"/>
+     <path d="M32 20 C36 26 35 34 32 42 C29 34 28 26 32 20 Z" fill="#ffe14a" stroke="${INK}" stroke-width="2" stroke-linejoin="round"/>
+     <ellipse cx="32" cy="54" rx="16" ry="4" fill="#868e96" opacity="0.45"/>`,
+  ),
   rocket: icon(
     `<path d="M32 8 C32 8 20 24 20 40 L26 54 H38 L44 40 C44 24 32 8 32 8 Z" fill="#e7f5ff" stroke="${INK}" stroke-width="3" stroke-linejoin="round"/>
      <circle cx="32" cy="28" r="6" fill="#74c0fc" stroke="${INK}" stroke-width="2"/>

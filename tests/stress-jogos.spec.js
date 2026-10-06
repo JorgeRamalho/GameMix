@@ -3,6 +3,7 @@ import { expectNoHorizontalOverflow, openHome } from "./helpers.js";
 
 /** Mesma ordem de `js/games/index.js` / `data-game` na home. */
 const GAME_IDS = [
+  "snake",
   "colorir",
   "tesouro",
   "pescaria",
@@ -18,6 +19,10 @@ const GAME_IDS = [
   "espaco",
   "blocos",
   "futebol",
+  "sequencia",
+  "ordenar",
+  "sombras",
+  "semaforo",
 ];
 
 function attachConsoleWatch(page) {
@@ -56,7 +61,7 @@ test("navegação hash casa ↔ todos os jogos e volta", async ({ page }) => {
     }, id);
     await expect(page.locator(".game-shell")).toBeVisible();
     await page.getByRole("button", { name: "Voltar", exact: true }).click();
-    await expect(page.getByRole("heading", { level: 1, name: "GameKids" })).toBeVisible();
+    await expect(page.getByRole("heading", { level: 1, name: "GameMix" })).toBeVisible();
   }
 });
 
@@ -77,7 +82,7 @@ test("vitória, jogar de novo e sair não deixam tela presa", async ({ page }) =
   await expect(page.locator('[data-treasure="1"]')).toHaveCount(2);
 
   await page.getByRole("button", { name: "Voltar", exact: true }).click();
-  await expect(page.getByRole("heading", { level: 1, name: "GameKids" })).toBeVisible();
+  await expect(page.getByRole("heading", { level: 1, name: "GameMix" })).toBeVisible();
   expect(errors).toEqual([]);
 });
 

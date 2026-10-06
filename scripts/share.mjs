@@ -1,5 +1,5 @@
 /**
- * Cria um link público temporário (internet) para o GameKids.
+ * Cria um link público temporário (internet) para o GameMix.
  * O servidor local deve estar rodando: npm run dev
  */
 import { spawn } from "node:child_process";
@@ -23,7 +23,7 @@ function lanAddresses() {
 }
 
 console.log("");
-console.log("  GameKids — compartilhar");
+console.log("  GameMix — compartilhar");
 console.log("");
 console.log(`  Certifique-se de que \"npm run dev\" está rodando na porta ${port}.`);
 console.log("");

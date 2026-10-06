@@ -20,20 +20,20 @@
   </script>
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="format-detection" content="telephone=no">
-  <title>GameKids — jogos infantis de 3 a 5 anos</title>
-  <meta name="description" content="GameKids é um ateliê de jogos digitais para crianças de 3 a 5 anos: colorir, tesouro, pescaria, alvo, quebra-cabeça, memória, Tetris, contar, inglês em português, ligar, animais, corrida, guerra espacial, blocos coloridos e pênalti. Fases fáceis até difíceis, com toque na tela.">
+  <title>GameMix — jogos infantis</title>
+  <meta name="description" content="GameMix é um ateliê de jogos digitais: colorir, tesouro, pescaria, alvo, quebra-cabeça, memória, Tetris, contar, inglês em português, ligar, animais, corrida, guerra espacial, blocos e pênalti. Fases fáceis até difíceis, com toque na tela.">
   <meta name="robots" content="index, follow">
   <meta name="theme-color" content="#FFE14A">
-  <meta name="application-name" content="GameKids">
-  <meta name="apple-mobile-web-app-title" content="GameKids">
+  <meta name="application-name" content="GameMix">
+  <meta name="apple-mobile-web-app-title" content="GameMix">
   <meta name="mobile-web-app-capable" content="yes">
   <link rel="canonical" href="./">
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="icon" href="assets/icon.svg" type="image/svg+xml">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="pt_BR">
-  <meta property="og:title" content="GameKids — jogos infantis de 3 a 5 anos">
-  <meta property="og:description" content="Jogos curtos para brincar e aprender dos 3 aos 5 anos, com toque direto na tela.">
+  <meta property="og:title" content="GameMix — jogos infantis">
+  <meta property="og:description" content="Jogos curtos para brincar e aprender, com toque direto na tela.">
   <meta name="twitter:card" content="summary">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -41,12 +41,13 @@
   <noscript>
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
   </noscript>
-  <link rel="stylesheet" href="css/gamekids.css">
+  <link rel="stylesheet" href="css/gamemix.css">
   <link rel="stylesheet" href="css/futebol.css">
   <link rel="stylesheet" href="css/espaco.css">
   <link rel="stylesheet" href="css/corrida.css">
   <link rel="stylesheet" href="css/game-polish.css">
   <link rel="stylesheet" href="css/games-arcade.css">
+  <link rel="stylesheet" href="css/games-mix.css">
   <script>
     if (location.search.indexOf("e2e=1") !== -1) {
       document.documentElement.dataset.e2e = "1";
@@ -56,22 +57,17 @@
   {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
-    "name": "GameKids",
+    "name": "GameMix",
     "applicationCategory": "EducationalApplication",
     "operatingSystem": "Web",
     "inLanguage": "pt-BR",
     "isAccessibleForFree": true,
-    "audience": {
-      "@type": "PeopleAudience",
-      "suggestedMinAge": 3,
-      "suggestedMaxAge": 5
-    },
     "offers": {
       "@type": "Offer",
       "price": "0",
       "priceCurrency": "BRL"
     },
-    "description": "Jogos digitais para crianças de 3 a 5 anos, com inglês explicado em português e interação por toque na tela."
+    "description": "Jogos digitais com inglês explicado em português e interação por toque na tela."
   }
   </script>
 </head>
@@ -80,7 +76,7 @@
 
   <header class="site-header">
     <div class="wrap bar">
-      <a class="brand" href="#/"><span class="brand-emoji" aria-hidden="true">🎮</span> GameKids</a>
+      <a class="brand" href="#/"><span class="brand-emoji" aria-hidden="true">🎮</span> GameMix</a>
       <p class="star-pill"><span class="pill-emoji" aria-hidden="true">⭐</span> <strong data-stars>0</strong> <span class="star-word">estrelas</span></p>
       <button type="button" class="sound-btn" data-sound aria-pressed="true" aria-label="Som ligado"><span aria-hidden="true">🔊</span><span class="sound-word">Som</span></button>
     </div>
@@ -98,8 +94,7 @@
           </div>
           <div class="hero-bubble">
             <p class="hero-stickers" aria-hidden="true">🌟🎨🐠</p>
-            <p class="eyebrow"><span aria-hidden="true">👧👦</span> 3 a 5 anos</p>
-            <h1 id="titulo">GameKids</h1>
+            <h1 id="titulo">GameMix</h1>
             <p class="tagline"><span class="tagline-emoji" aria-hidden="true">👆</span> Toque num jogo!</p>
           </div>
         </section>
@@ -108,6 +103,115 @@
         <p class="game-grid-hint">Um jogo em cada linha — role para ver todos</p>
         <nav aria-labelledby="jogos-titulo">
           <ul class="game-grid">
+            <li>
+              <a class="game-card" href="#/snake" data-game="snake">
+                <span class="game-figure game-figure-snake" aria-hidden="true">
+                  <span class="snake-name">SNAKE</span>
+                </span>
+                <span class="game-copy">
+                  <span class="game-title">Snake</span>
+                  <span class="game-blurb"><span class="blurb-emoji">🍎</span> Clássico</span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a class="game-card" href="#/espaco" data-game="espaco">
+                <span class="game-figure" aria-hidden="true">
+                  <span class="game-emoji-main">🚀</span>
+                  <span class="game-emoji-extra">☄️</span>
+                </span>
+                <span class="game-copy">
+                  <span class="game-title">Guerra espacial</span>
+                  <span class="game-blurb"><span class="blurb-emoji">🔫✨</span> Meteoros</span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a class="game-card" href="#/tetris" data-game="tetris">
+                <span class="game-figure" aria-hidden="true">
+                  <span class="game-emoji-main">🧩</span>
+                  <span class="game-emoji-extra">⬇️</span>
+                </span>
+                <span class="game-copy">
+                  <span class="game-title">Tetris</span>
+                  <span class="game-blurb"><span class="blurb-emoji">🟦🟨</span> Linhas</span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a class="game-card" href="#/corrida" data-game="corrida">
+                <span class="game-figure" aria-hidden="true">
+                  <span class="game-emoji-main">🏎️</span>
+                  <span class="game-emoji-extra">⭐</span>
+                </span>
+                <span class="game-copy">
+                  <span class="game-title">Corrida</span>
+                  <span class="game-blurb"><span class="blurb-emoji">🚗💨</span> Desviar</span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a class="game-card" href="#/futebol" data-game="futebol">
+                <span class="game-figure" aria-hidden="true">
+                  <span class="game-emoji-main">⚽</span>
+                  <span class="game-emoji-extra">🥅</span>
+                </span>
+                <span class="game-copy">
+                  <span class="game-title">Pênalti</span>
+                  <span class="game-blurb"><span class="blurb-emoji">🧤🎯</span> Chutar</span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a class="game-card" href="#/memoria" data-game="memoria">
+                <span class="game-figure game-figure-memoria" aria-hidden="true">
+                  <span class="mem-thumb">⭐</span>
+                  <span class="mem-thumb">⭐</span>
+                  <span class="mem-thumb">🍎</span>
+                  <span class="mem-thumb">🍎</span>
+                </span>
+                <span class="game-copy">
+                  <span class="game-title">Memória</span>
+                  <span class="game-blurb"><span class="blurb-emoji">🃏</span> Pares</span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a class="game-card" href="#/pescaria" data-game="pescaria">
+                <span class="game-figure" aria-hidden="true">
+                  <span class="game-emoji-main">🐟</span>
+                  <span class="game-emoji-extra">🎣</span>
+                </span>
+                <span class="game-copy">
+                  <span class="game-title">Pescaria</span>
+                  <span class="game-blurb"><span class="blurb-emoji">🌊</span> Peixes</span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a class="game-card" href="#/quebra" data-game="quebra">
+                <span class="game-figure" aria-hidden="true">
+                  <span class="game-emoji-main">🧩</span>
+                  <span class="game-emoji-extra">🖼️</span>
+                </span>
+                <span class="game-copy">
+                  <span class="game-title">Quebra</span>
+                  <span class="game-blurb"><span class="blurb-emoji">🧩</span> Montar</span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a class="game-card" href="#/animais" data-game="animais">
+                <span class="game-figure" aria-hidden="true">
+                  <span class="game-emoji-main">🐶</span>
+                  <span class="game-emoji-extra">🐱</span>
+                </span>
+                <span class="game-copy">
+                  <span class="game-title">Animais</span>
+                  <span class="game-blurb"><span class="blurb-emoji">🦆🐮</span> Quem é?</span>
+                </span>
+              </a>
+            </li>
             <li>
               <a class="game-card" href="#/colorir" data-game="colorir">
                 <span class="game-figure" aria-hidden="true">
@@ -133,18 +237,6 @@
               </a>
             </li>
             <li>
-              <a class="game-card" href="#/pescaria" data-game="pescaria">
-                <span class="game-figure" aria-hidden="true">
-                  <span class="game-emoji-main">🐟</span>
-                  <span class="game-emoji-extra">🎣</span>
-                </span>
-                <span class="game-copy">
-                  <span class="game-title">Pescaria</span>
-                  <span class="game-blurb"><span class="blurb-emoji">🌊</span> Peixes</span>
-                </span>
-              </a>
-            </li>
-            <li>
               <a class="game-card" href="#/alvo" data-game="alvo">
                 <span class="game-figure" aria-hidden="true">
                   <span class="game-emoji-main">🎯</span>
@@ -153,44 +245,6 @@
                 <span class="game-copy">
                   <span class="game-title">Alvo</span>
                   <span class="game-blurb"><span class="blurb-emoji">✨</span> Estrelas</span>
-                </span>
-              </a>
-            </li>
-            <li>
-              <a class="game-card" href="#/quebra" data-game="quebra">
-                <span class="game-figure" aria-hidden="true">
-                  <span class="game-emoji-main">🧩</span>
-                  <span class="game-emoji-extra">🖼️</span>
-                </span>
-                <span class="game-copy">
-                  <span class="game-title">Quebra</span>
-                  <span class="game-blurb"><span class="blurb-emoji">🧩</span> Montar</span>
-                </span>
-              </a>
-            </li>
-            <li>
-              <a class="game-card" href="#/memoria" data-game="memoria">
-                <span class="game-figure game-figure-memoria" aria-hidden="true">
-                  <span class="mem-thumb">⭐</span>
-                  <span class="mem-thumb">⭐</span>
-                  <span class="mem-thumb">🍎</span>
-                  <span class="mem-thumb">🍎</span>
-                </span>
-                <span class="game-copy">
-                  <span class="game-title">Memória</span>
-                  <span class="game-blurb"><span class="blurb-emoji">🃏</span> Pares</span>
-                </span>
-              </a>
-            </li>
-            <li>
-              <a class="game-card" href="#/tetris" data-game="tetris">
-                <span class="game-figure" aria-hidden="true">
-                  <span class="game-emoji-main">🧩</span>
-                  <span class="game-emoji-extra">⬇️</span>
-                </span>
-                <span class="game-copy">
-                  <span class="game-title">Tetris</span>
-                  <span class="game-blurb"><span class="blurb-emoji">🟦🟨</span> Linhas</span>
                 </span>
               </a>
             </li>
@@ -231,42 +285,6 @@
               </a>
             </li>
             <li>
-              <a class="game-card" href="#/animais" data-game="animais">
-                <span class="game-figure" aria-hidden="true">
-                  <span class="game-emoji-main">🐶</span>
-                  <span class="game-emoji-extra">🐱</span>
-                </span>
-                <span class="game-copy">
-                  <span class="game-title">Animais</span>
-                  <span class="game-blurb"><span class="blurb-emoji">🦆🐮</span> Quem é?</span>
-                </span>
-              </a>
-            </li>
-            <li>
-              <a class="game-card" href="#/corrida" data-game="corrida">
-                <span class="game-figure" aria-hidden="true">
-                  <span class="game-emoji-main">🏎️</span>
-                  <span class="game-emoji-extra">⭐</span>
-                </span>
-                <span class="game-copy">
-                  <span class="game-title">Corrida</span>
-                  <span class="game-blurb"><span class="blurb-emoji">🚗💨</span> Desviar</span>
-                </span>
-              </a>
-            </li>
-            <li>
-              <a class="game-card" href="#/espaco" data-game="espaco">
-                <span class="game-figure" aria-hidden="true">
-                  <span class="game-emoji-main">🚀</span>
-                  <span class="game-emoji-extra">☄️</span>
-                </span>
-                <span class="game-copy">
-                  <span class="game-title">Guerra espacial</span>
-                  <span class="game-blurb"><span class="blurb-emoji">🔫✨</span> Meteoros</span>
-                </span>
-              </a>
-            </li>
-            <li>
               <a class="game-card" href="#/blocos" data-game="blocos">
                 <span class="game-figure" aria-hidden="true">
                   <span class="game-emoji-main">🧱</span>
@@ -279,14 +297,52 @@
               </a>
             </li>
             <li>
-              <a class="game-card" href="#/futebol" data-game="futebol">
+              <a class="game-card" href="#/sequencia" data-game="sequencia">
                 <span class="game-figure" aria-hidden="true">
-                  <span class="game-emoji-main">⚽</span>
-                  <span class="game-emoji-extra">🥅</span>
+                  <span class="game-emoji-main">🔁</span>
+                  <span class="game-emoji-extra">🎨</span>
                 </span>
                 <span class="game-copy">
-                  <span class="game-title">Pênalti</span>
-                  <span class="game-blurb"><span class="blurb-emoji">🧤🎯</span> Chutar</span>
+                  <span class="game-title">Sequência</span>
+                  <span class="game-blurb"><span class="blurb-emoji">🧠</span> Repetir</span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a class="game-card" href="#/ordenar" data-game="ordenar">
+                <span class="game-figure game-figure-order" aria-hidden="true">
+                  <span class="order-preview">
+                    <span class="order-nums">1..3..6..12</span>
+                    <span class="order-arrow" aria-hidden="true">→</span>
+                  </span>
+                </span>
+                <span class="game-copy">
+                  <span class="game-title">Ordenar</span>
+                  <span class="game-blurb"><span class="blurb-emoji">↕️</span> Números</span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a class="game-card" href="#/sombras" data-game="sombras">
+                <span class="game-figure" aria-hidden="true">
+                  <span class="game-emoji-main">🌑</span>
+                  <span class="game-emoji-extra">🐶</span>
+                </span>
+                <span class="game-copy">
+                  <span class="game-title">Sombras</span>
+                  <span class="game-blurb"><span class="blurb-emoji">👀</span> Achar</span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a class="game-card" href="#/semaforo" data-game="semaforo">
+                <span class="game-figure" aria-hidden="true">
+                  <span class="game-emoji-main">🚦</span>
+                  <span class="game-emoji-extra">🟢</span>
+                </span>
+                <span class="game-copy">
+                  <span class="game-title">Semáforo</span>
+                  <span class="game-blurb"><span class="blurb-emoji">⏱️</span> Só verde</span>
                 </span>
               </a>
             </li>
@@ -326,7 +382,7 @@
 
   <footer class="site-footer">
     <div class="wrap">
-      <p>GameKids é um ateliê digital para crianças de 3 a 5 anos. Os jogos usam cores, figuras e desafios curtos para estimular atenção, vocabulário, contagem e coordenação. O inglês é explicado em português. Tudo é feito para toque na tela.</p>
+      <p>GameMix é um ateliê digital. Os jogos usam cores, figuras e desafios curtos para estimular atenção, vocabulário, contagem e coordenação. O inglês é explicado em português. Tudo é feito para toque na tela.</p>
     </div>
   </footer>
 

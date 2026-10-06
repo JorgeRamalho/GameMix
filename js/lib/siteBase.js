@@ -1,5 +1,5 @@
 /**
- * Pasta do app na URL (ex.: "/GameKids/" no GitHub Pages, "/" no dev local).
+ * Pasta do app na URL (ex.: "/GameMix/" no GitHub Pages, "/" no dev local).
  */
 export function siteBasePath() {
   let path = location.pathname;

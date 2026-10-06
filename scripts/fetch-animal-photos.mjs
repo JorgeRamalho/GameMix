@@ -30,7 +30,7 @@ const PHOTOS = {
 await mkdir(outDir, { recursive: true });
 
 for (const [id, url] of Object.entries(PHOTOS)) {
-  const res = await fetch(url, { headers: { "User-Agent": "GameKids/1.0 (educational)" } });
+  const res = await fetch(url, { headers: { "User-Agent": "GameMix/1.0 (educational)" } });
   if (!res.ok) {
     console.error(`Falha ${id}: ${res.status} ${url}`);
     process.exitCode = 1;

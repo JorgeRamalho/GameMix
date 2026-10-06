@@ -14,10 +14,15 @@ const GAME_INTROS = {
   ingles: `Este é o jogo de inglês. Ouça a palavra, aprenda o significado em português e escolha a figura certa. ${UNDERSTOOD_QUESTION}`,
   ligar: `Este é o jogo de ligar os pares. Toque de um lado e depois no desenho que combina. ${UNDERSTOOD_QUESTION}`,
   animais: `Este é o jogo dos animais. Olhe o bichinho e escolha o nome certo. ${UNDERSTOOD_QUESTION}`,
-  corrida: `Este é o jogo da corrida. Mude de pista, pegue estrelas e desvie dos cones. ${UNDERSTOOD_QUESTION}`,
+  corrida: `Este é o jogo da corrida. Mude de pista, pegue estrelas e desvie dos cones e do fogo. ${UNDERSTOOD_QUESTION}`,
   espaco: `Este é o jogo da guerra espacial. Mova a nave, atire nos meteoros e desvie dos que caem. ${UNDERSTOOD_QUESTION}`,
-  blocos: `Este é o jogo dos blocos coloridos. Toque num bloco e encaixe no lugar da mesma cor. ${UNDERSTOOD_QUESTION}`,
+  blocos: `Este é o jogo dos blocos. Toque num bloco e encaixe no lugar da mesma cor. ${UNDERSTOOD_QUESTION}`,
   futebol: `Este é o jogo do pênalti. Escolha um canto do gol para chutar e furar o goleiro. ${UNDERSTOOD_QUESTION}`,
+  snake: `Este é o jogo Snake. Coma os quadradinhos, cresça e complete cada fase. Use os botões ou as setas. ${UNDERSTOOD_QUESTION}`,
+  sequencia: `Este é o jogo da sequência. Olhe a ordem das cores e repita tocando nos botões. ${UNDERSTOOD_QUESTION}`,
+  ordenar: `Este é o jogo de ordenar. Toque nos números do menor ao maior, ou do maior ao menor. ${UNDERSTOOD_QUESTION}`,
+  sombras: `Este é o jogo das sombras. Escolha o desenho que combina com a silhueta preta. ${UNDERSTOOD_QUESTION}`,
+  semaforo: `Este é o jogo do semáforo. Toque só quando a luz ficar verde. ${UNDERSTOOD_QUESTION}`,
 };
 
 export function gameEntryLines(game, { replay = false } = {}) {

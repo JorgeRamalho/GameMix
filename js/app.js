@@ -64,7 +64,7 @@ if (canonical) canonical.href = new URL("./", location.href).href;
 
 document.addEventListener("pointerdown", () => unlockAudio(), { passive: true });
 
-const coachSeen = "gamekids-coach";
+const coachSeen = "gamemix-coach";
 if (coach && !document.documentElement.dataset.e2e && !localStorage.getItem(coachSeen)) {
   coach.hidden = false;
   coach.querySelector("button")?.focus();

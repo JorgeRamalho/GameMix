@@ -6,7 +6,7 @@ export const CAMPAIGN_PHASES = 10;
 export async function openHome(page, { fullPhases = false } = {}) {
   const query = fullPhases ? "/?e2e=1&e2eFull=1" : "/?e2e=1";
   await page.goto(query);
-  await expect(page.getByRole("heading", { level: 1, name: "GameKids" })).toBeVisible();
+  await expect(page.getByRole("heading", { level: 1, name: "GameMix" })).toBeVisible();
 }
 
 export async function openGame(page, name, { fullPhases = false } = {}) {

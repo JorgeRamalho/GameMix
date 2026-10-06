@@ -1,5 +1,5 @@
 /**
- * Motor de comportamento do GameKids.
+ * Motor de comportamento do GameMix.
  * Une ponteiro, toque, ciclo de vida dos jogos e o laço de movimento.
  */
 
@@ -30,8 +30,8 @@ import {
 
 installSpeechVoiceListener();
 
-const STORE_KEY = "gamekids-progress-v1";
-const HOME_TITLE = "GameKids — jogos infantis de 3 a 5 anos";
+const STORE_KEY = "gamemix-progress-v1";
+const HOME_TITLE = "GameMix — jogos infantis";
 
 const searchParams = new URLSearchParams(location.search);
 export const E2E = searchParams.has("e2e");
@@ -292,6 +292,62 @@ export function bindInstantPress(element, action, signal) {
   );
 }
 
+/** Um toque = um passo de pista; deduplica pointerdown + click fantasma no mobile. */
+export function bindLaneSteer(element, action, signal, { tapGapMs = 88 } = {}) {
+  if (!element) return;
+  let lastFireAt = 0;
+  let ignoreClickUntil = 0;
+
+  const fire = (event) => {
+    const now = performance.now();
+    if (event?.type === "click" && now < ignoreClickUntil) {
+      event.preventDefault();
+      return;
+    }
+    if (now - lastFireAt < tapGapMs) {
+      event?.preventDefault?.();
+      return;
+    }
+    lastFireAt = now;
+    if (event?.type === "pointerdown") {
+      ignoreClickUntil = now + 420;
+      try {
+        element.setPointerCapture(event.pointerId);
+      } catch {
+        /* opcional */
+      }
+    }
+    event?.preventDefault?.();
+    action();
+  };
+
+  element.addEventListener(
+    "pointerdown",
+    (event) => {
+      if (event.button !== 0) return;
+      fire(event);
+    },
+    { signal, passive: false },
+  );
+  element.addEventListener(
+    "click",
+    (event) => {
+      if (event.button !== 0) return;
+      fire(event);
+    },
+    { signal },
+  );
+  element.addEventListener(
+    "keydown",
+    (event) => {
+      if (event.key !== "Enter" && event.key !== " ") return;
+      event.preventDefault();
+      fire(event);
+    },
+    { signal },
+  );
+}
+
 function toneContext() {
   if (E2E || !soundOn || typeof AudioContext === "undefined") return null;
   if (!audioCtx) audioCtx = new AudioContext();
@@ -409,7 +465,7 @@ export class BehaviorEngine {
     shell.dataset.runIndex = "0";
     this.current = { id, game, ctx, shell, runIndex: 0 };
     game.mount(ctx);
-    document.title = `${game.title} — GameKids`;
+    document.title = `${game.title} — GameMix`;
     unlockAudio();
     gameEntryLines(game).forEach((line) => speakPortuguese(line));
     this._ensureLoop();

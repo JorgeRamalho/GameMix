@@ -5,23 +5,22 @@ test.describe("SEO e conteúdo", () => {
   test("título, descrição, idioma e dados estruturados", async ({ page }) => {
     test.info().annotations.push({ type: "eixo", description: "SEO" });
     await openHome(page);
-    await expect(page).toHaveTitle("GameKids — jogos infantis de 3 a 5 anos");
+    await expect(page).toHaveTitle("GameMix — jogos infantis");
     const description = page.locator('meta[name="description"]');
-    await expect(description).toHaveAttribute("content", /3 a 5 anos/);
+    await expect(description).toHaveAttribute("content", /GameMix/);
     await expect(description).toHaveAttribute("content", /português/);
     await expect(page.locator("html")).toHaveAttribute("lang", "pt-BR");
     await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", /index/);
     const canonical = await page.locator('link[rel="canonical"]').getAttribute("href");
     expect(canonical).toMatch(/^https?:\/\//);
     const data = JSON.parse(await page.locator('script[type="application/ld+json"]').textContent());
-    expect(data.name).toBe("GameKids");
+    expect(data.name).toBe("GameMix");
     expect(data.applicationCategory).toBe("EducationalApplication");
-    expect(data.audience.suggestedMinAge).toBe(3);
-    expect(data.audience.suggestedMaxAge).toBe(5);
+    expect(data.audience).toBeUndefined();
     expect(data.inLanguage).toBe("pt-BR");
     await expect(page.locator("h1")).toHaveCount(1);
     await expect(page.locator("main")).toHaveCount(1);
-    await expect(page.locator("[data-game]")).toHaveCount(14);
+    await expect(page.locator("[data-game]")).toHaveCount(19);
     const robots = await page.request.get("/robots.txt");
     expect(await robots.text()).toContain("Allow");
   });
@@ -48,7 +47,7 @@ test.describe("Usabilidade e UX", () => {
     const background = await back.evaluate((element) => getComputedStyle(element).backgroundColor);
     expect(background).toBe("rgb(255, 225, 74)");
     await back.click();
-    await expect(page.getByRole("heading", { level: 1, name: "GameKids" })).toBeVisible();
+    await expect(page.getByRole("heading", { level: 1, name: "GameMix" })).toBeVisible();
     await expectNoHorizontalOverflow(page);
   });
 
@@ -69,7 +68,6 @@ test.describe("Usabilidade e UX", () => {
     await expect(page.getByRole("heading", { name: "Como brincar" })).toBeVisible();
     await expect(page.locator("body")).toContainText(/toque num jogo/i);
     await expect(page.locator("body")).toContainText("português");
-    await expect(page.locator("body")).toContainText("3 a 5 anos");
   });
 });
 
@@ -94,7 +92,7 @@ test.describe("Identidade visual, tipografia e responsivo", () => {
     expect(fontSize).toBeGreaterThanOrEqual(32);
     const family = await page.locator("h1").evaluate((element) => getComputedStyle(element).fontFamily);
     expect(family.toLowerCase()).toMatch(/fredoka|segoe|trebuchet|nunito|arial/);
-    const css = await (await page.request.get("/css/gamekids.css")).text();
+    const css = await (await page.request.get("/css/gamemix.css")).text();
     for (const token of [
       "Fredoka",
       "Nunito",

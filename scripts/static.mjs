@@ -39,8 +39,8 @@ function lanAddresses() {
 const server = http.createServer((req, res) => {
   const url = new URL(req.url || "/", `http://127.0.0.1:${port}`);
   let pathname = decodeURIComponent(url.pathname);
-  // Mesmo prefixo do GitHub Pages (jorgeramalho.github.io/GameKids/)
-  const pagesPrefix = "/GameKids";
+  // Mesmo prefixo do GitHub Pages (jorgeramalho.github.io/GameMix/)
+  const pagesPrefix = "/GameMix";
   if (pathname === pagesPrefix || pathname.startsWith(`${pagesPrefix}/`)) {
     pathname = pathname.slice(pagesPrefix.length) || "/";
   }
@@ -71,7 +71,7 @@ const server = http.createServer((req, res) => {
 
 server.listen(port, host, () => {
   console.log("");
-  console.log("  GameKids — servidor ativo");
+  console.log("  GameMix — servidor ativo");
   console.log("");
   console.log(`  Neste computador:  http://127.0.0.1:${port}/`);
   const ips = lanAddresses();
